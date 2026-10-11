@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>n1puts.ru</title>
-  <meta name="description" content="Личный хаб сервисов и проектов">
+  <meta name="description" content="n1puts.ru — личный хаб">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -12,80 +12,49 @@
 </head>
 <body>
 
-  <!-- Секция 1: картинка на весь экран -->
   <section class="hero">
-    <img src="img/hero.jpg" alt="" class="hero-img">
+    <img src="img/hero.jpeg" alt="" class="hero-img">
     <div class="hero-overlay"></div>
-    <div class="scroll-hint">
-      <span>листай вниз</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </div>
-  </section>
 
-  <!-- Секция 2: текст по центру -->
-  <section class="about">
-    <div class="about-inner">
+    <div class="hero-content">
       <h1>n1puts<span>.ru</span></h1>
-      <p>мой личный сервер, где живут сервисы, проекты и эксперименты</p>
-      <p class="muted">всё работает на proxmox, отдаётся через caddy, обновляется через git</p>
-    </div>
-  </section>
+      <p class="tagline">я перданул и обосрал свои шорты</p>
 
-  <!-- Секция 3: ссылки -->
-  <section class="links-section">
-    <h2>Сервисы</h2>
-    <div class="grid">
-      <a href="https://kuma.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">📊</div>
-        <div class="card-title">Uptime Kuma</div>
-        <div class="card-desc">мониторинг</div>
-      </a>
-      <a href="https://grafana.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">📈</div>
-        <div class="card-title">Grafana</div>
-        <div class="card-desc">метрики и дашборды</div>
-      </a>
-      <a href="https://immich.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">🖼️</div>
-        <div class="card-title">Immich</div>
-        <div class="card-desc">фото и видео</div>
-      </a>
-      <a href="https://seafile.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">📁</div>
-        <div class="card-title">Seafile</div>
-        <div class="card-desc">облако и файлы</div>
-      </a>
-      <a href="https://ai.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">🤖</div>
-        <div class="card-title">Open WebUI</div>
-        <div class="card-desc">локальная LLM</div>
-      </a>
-      <a href="https://proxmox.n1puts.ru" class="card" target="_blank" rel="noopener">
-        <div class="icon">⚙️</div>
-        <div class="card-title">Proxmox</div>
-        <div class="card-desc">панель сервера</div>
-      </a>
+      <div class="icon-row">
+        <a href="https://kuma.n1puts.ru" target="_blank" rel="noopener" aria-label="Uptime Kuma">
+          <img src="img/icons/kuma.svg" alt="">
+        </a>
+        <a href="https://grafana.n1puts.ru" target="_blank" rel="noopener" aria-label="Grafana">
+          <img src="img/icons/grafana.svg" alt="">
+        </a>
+        <a href="https://immich.n1puts.ru" target="_blank" rel="noopener" aria-label="Immich">
+          <img src="img/icons/immich.svg" alt="">
+        </a>
+        <a href="https://seafile.n1puts.ru" target="_blank" rel="noopener" aria-label="Seafile">
+          <img src="img/icons/seafile.svg" alt="">
+        </a>
+        <a href="https://ai.n1puts.ru" target="_blank" rel="noopener" aria-label="Open WebUI">
+          <img src="img/icons/openwebui.png" alt="">
+        </a>
+        <a href="https://proxmox.n1puts.ru" target="_blank" rel="noopener" aria-label="Proxmox">
+          <img src="img/icons/proxmox.svg" alt="">
+        </a>
+        <a href="https://t.me/peredoz2015" target="_blank" rel="noopener" aria-label="Telegram">
+          <img src="img/icons/telegram.svg" alt="">
+        </a>
+        <a href="https://vk.com/stup1n" target="_blank" rel="noopener" aria-label="VK">
+          <img src="img/icons/vk.svg" alt="">
+        </a>
+        <a href="https://github.com/stup1n1337" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="img/icons/github.svg" alt="">
+        </a>
+      </div>
     </div>
 
-    <h2>Соцсети</h2>
-    <div class="grid small">
-      <a href="https://t.me/peredoz2015" class="card" target="_blank" rel="noopener">
-        <div class="icon">✈️</div>
-        <div class="card-title">Telegram</div>
-        <div class="card-desc">@peredoz2015</div>
-      </a>
-      <a href="https://vk.com/stup1n" class="card" target="_blank" rel="noopener">
-        <div class="icon">🅥</div>
-        <div class="card-title">VK</div>
-        <div class="card-desc">vk.com/stup1n</div>
-      </a>
-      <a href="https://github.com/stup1n1337" class="card" target="_blank" rel="noopener">
-        <div class="icon">🐙</div>
-        <div class="card-title">GitHub</div>
-        <div class="card-desc">stup1n1337</div>
-      </a>
+    <div class="arrows">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
