@@ -8,15 +8,17 @@
   --border: #3a3a3a;
 }
 
-html { scroll-behavior: smooth; }
+html, body {
+  background: var(--bg);
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* HERO */
@@ -25,62 +27,87 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;         /* small viewport height — не прыгает от адресной строки */
+  min-height: 560px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
 }
+
+/* Размытый фон — та же картинка, но растянута на весь экран */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -60px;
+  background: url('img/hero.jpeg') center/cover no-repeat;
+  filter: blur(40px) brightness(0.35) saturate(1.2);
+  z-index: -2;
+}
+
+/* Чёткая картинка по центру — целиком видна */
 
 .hero-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  z-index: -1;
   animation: heroZoom 25s ease-out infinite alternate;
 }
 
 @keyframes heroZoom {
   from { transform: scale(1); }
-  to   { transform: scale(1.06); }
+  to   { transform: scale(1.03); }
 }
+
+/* Затемнение поверх картинки — чтобы текст читался */
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%);
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 100%);
+  z-index: 0;
+  pointer-events: none;
 }
+
+/* Контент поверх всего */
 
 .hero-content {
   position: relative;
   z-index: 2;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
   text-align: center;
-  gap: 16px;
+  padding: 24px;
+  gap: 14px;
+  max-width: 720px;
+  width: 100%;
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 9vw, 5.5rem);
+  font-size: clamp(2.5rem, 9vw, 5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.85), 0 0 6px rgba(0,0,0,0.5);
   animation: fadeUp 0.9s ease both;
 }
 
 .hero-content h1 span { color: var(--accent); }
 
 .tagline {
-  font-size: clamp(0.95rem, 2.2vw, 1.35rem);
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
   font-weight: 400;
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.6);
   max-width: 90%;
   animation: fadeUp 0.9s 0.15s ease both;
 }
@@ -92,9 +119,9 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin-top: 24px;
-  max-width: 640px;
+  gap: 12px;
+  margin-top: 22px;
+  max-width: 600px;
   animation: fadeUp 0.9s 0.3s ease both;
 }
 
@@ -102,48 +129,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: rgba(20, 20, 20, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(15, 15, 15, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .icon-row a:hover {
-  background: rgba(40, 40, 40, 0.85);
+  background: rgba(35, 35, 35, 0.9);
   border-color: var(--accent);
   transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 0 1px rgba(229,112,0,0.3);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 0 1px rgba(229,112,0,0.35);
 }
 
-.icon-row a:active {
-  transform: translateY(-1px) scale(1.02);
-}
+.icon-row a:active { transform: translateY(-1px) scale(1.02); }
 
 .icon-row img {
   width: 22px;
   height: 22px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
 }
 
-/* Стрелки внизу */
+/* Стрелки снизу */
 
 .arrows {
   position: absolute;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   pointer-events: none;
 }
 
@@ -151,7 +177,8 @@ body {
   width: 18px;
   height: 18px;
   display: block;
-  margin-top: -6px;
+  margin-top: -7px;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.6));
   animation: arrowFade 1.8s ease-in-out infinite;
 }
 
@@ -164,12 +191,12 @@ body {
   50%      { opacity: 1;    transform: translateY(4px); }
 }
 
-/* Общие */
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Футер */
 
 footer {
   text-align: center;
@@ -177,16 +204,19 @@ footer {
   color: var(--text-muted);
   font-size: 0.8rem;
   border-top: 1px solid var(--border);
+  background: var(--bg);
 }
 
 /* Мобилки */
 
 @media (max-width: 600px) {
-  .hero-content { gap: 12px; padding: 20px; }
-  .icon-row { gap: 10px; max-width: 90%; margin-top: 18px; }
+  .hero { min-height: 500px; }
+  .hero-content { gap: 10px; padding: 20px; }
+  .icon-row { gap: 8px; margin-top: 16px; max-width: 100%; }
   .icon-row a { width: 40px; height: 40px; }
-  .icon-row img { width: 20px; height: 20px; }
+  .icon-row img { width: 19px; height: 19px; }
   .arrows { bottom: 16px; }
+  .arrows svg { width: 16px; height: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
