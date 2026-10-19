@@ -3,45 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>n1puts.ru</title>
-  <meta name="description" content="n1puts.ru — личный хаб">
+  <meta name="theme-color" content="#0a0208">
+  <meta name="description" content="n1puts.ru — личный уголок интернета с сомнительной репутацией">
+  <title>n1puts.ru — НЕ ТРОГАЙ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="ticker ticker-top" aria-hidden="true"><div class="ticker-track">
+    <span>★ N1PUTS.RU ★ НЕ ТРОГАЙ ★ СЕРВЕРЫ НА ЧЕСТНОМ СЛОВЕ ★ N1PUTS.RU ★ ВСЁ ПОД КОНТРОЛЕМ (НЕТ) ★</span>
+    <span>★ N1PUTS.RU ★ НЕ ТРОГАЙ ★ СЕРВЕРЫ НА ЧЕСТНОМ СЛОВЕ ★ N1PUTS.RU ★ ВСЁ ПОД КОНТРОЛЕМ (НЕТ) ★</span>
+  </div></div>
 
-  <section class="main">
-    <div class="main-inner">
-      <h1 class="reveal">n1puts<span>.ru</span></h1>
-      <p class="tagline reveal reveal-delay-1">я перданул и обосрал свои шорты</p>
+  <header class="topbar">
+    <a class="mini-logo" href="#" aria-label="На главную">n1puts<span>.ru</span></a>
+    <div class="top-status"><i class="status-dot"></i><span id="system-status">СИСТЕМА ВРОДЕ РАБОТАЕТ</span></div>
+    <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">♫ ЗВУК: ВЫКЛ</button>
+  </header>
 
-      <div class="icon-row reveal reveal-delay-2">
-        <a href="https://kuma.n1puts.ru" target="_blank" rel="noopener" aria-label="Uptime Kuma"><img src="img/icons/kuma.svg" alt=""></a>
-        <a href="https://grafana.n1puts.ru" target="_blank" rel="noopener" aria-label="Grafana"><img src="img/icons/grafana.svg" alt=""></a>
-        <a href="https://immich.n1puts.ru" target="_blank" rel="noopener" aria-label="Immich"><img src="img/icons/immich.svg" alt=""></a>
-        <a href="https://seafile.n1puts.ru" target="_blank" rel="noopener" aria-label="Seafile"><img src="img/icons/seafile.svg" alt=""></a>
-        <a href="https://ai.n1puts.ru" target="_blank" rel="noopener" aria-label="Open WebUI"><img src="img/icons/openwebui.svg" alt=""></a>
-        <a href="https://proxmox.n1puts.ru" target="_blank" rel="noopener" aria-label="Proxmox"><img src="img/icons/proxmox.svg" alt=""></a>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-stamp stamp-left" aria-hidden="true">НЕ<br>ЖМИ<br>СЮДА</div>
+      <div class="hero-stamp stamp-right" aria-hidden="true">100%<br>СОМНИТЕЛЬНО</div>
+      <p class="eyebrow"><span class="blink">●</span> ЛИЧНЫЙ САЙТ / ВЕРСИЯ «А ЧЁ ТАКОЕ?»</p>
+      <div class="hero-title-wrap">
+        <div class="hero-shadow" aria-hidden="true">n1puts</div>
+        <h1 class="hero-title" id="hero-title"><span>n1puts</span><b>.ru</b></h1>
       </div>
-    </div>
-  </section>
+      <p class="hero-subtitle">добро пожаловать в <span>цифровую ошибку</span></p>
+      <p class="hero-caption" id="hero-caption">я перданул и обосрал свои шорты</p>
+      <div class="hero-actions">
+        <a class="chaos-button primary" href="#services">ПОКАЗАТЬ МОИ ХУЙНЮШКИ <span>↘</span></a>
+        <button class="chaos-button" id="randomize" type="button">СЛУЧАЙНАЯ ХУЙНЯ <span>✳</span></button>
+      </div>
+      <div class="orbit orbit-one" aria-hidden="true">404<br>МОЗГ<br>NOT FOUND</div>
+      <div class="orbit orbit-two" aria-hidden="true">¯\_(ツ)_/¯</div>
+    </section>
 
-  <footer>
+    <section class="meme-zone" aria-label="Случайный мем">
+      <div class="section-kicker">/// ВАЖНАЯ ИНФОРМАЦИЯ (НЕТ)</div>
+      <div class="meme-card" id="meme-card" tabindex="0" role="button" aria-label="Сменить мем">
+        <div class="meme-topline"><span>MEME.EXE</span><span id="meme-index">№ 001</span><span class="meme-live">LIVE???</span></div>
+        <div class="meme-content">
+          <div class="meme-copy"><span class="meme-small">СЕГОДНЯШНИЙ ПРОГНОЗ:</span><strong id="meme-text">СЕРВЕР РАБОТАЕТ</strong><span id="meme-subtext">но это не точно</span></div>
+          <div class="meme-face" id="meme-face" aria-hidden="true">🗿</div>
+        </div>
+        <div class="meme-bottom"><span>НАЖМИ, ЕСЛИ НЕ БОИШЬСЯ</span><span>↻ ОБНОВИТЬ РЕАЛЬНОСТЬ</span></div>
+      </div>
+      <p class="micro-hint">* мемы могут не отражать действительность. как и весь сайт.</p>
+    </section>
+
+    <section class="services-section" id="services">
+      <div class="section-heading">
+        <div><p class="section-kicker">/// МОЯ ИНФРАСТРУКТУРА</p><h2>СЕРВИСЫ<span>™</span></h2></div>
+        <div class="service-note">я это поднял<br>и теперь боюсь выключать</div>
+      </div>
+      <div class="service-grid">
+        <a class="service-card card-kuma" href="https://kuma.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">01 / БДИТЕЛЬНЫЙ</span><img src="img/icons/kuma.svg" alt="" class="service-icon">
+          <strong>Uptime Kuma</strong><span class="service-desc">Следит, как всё падает.</span><span class="service-arrow">↗</span>
+        </a>
+        <a class="service-card card-grafana" href="https://grafana.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">02 / КРАСИВЫЕ ГРАФИКИ</span><img src="img/icons/grafana.svg" alt="" class="service-icon">
+          <strong>Grafana</strong><span class="service-desc">Панель, чтобы тревожиться красиво.</span><span class="service-arrow">↗</span>
+        </a>
+        <a class="service-card card-immich" href="https://immich.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">03 / КОТИКИ</span><img src="img/icons/immich.svg" alt="" class="service-icon">
+          <strong>Immich</strong><span class="service-desc">Фотоархив великих свершений.</span><span class="service-arrow">↗</span>
+        </a>
+        <a class="service-card card-seafile" href="https://seafile.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">04 / ОБЛАКО</span><img src="img/icons/seafile.svg" alt="" class="service-icon">
+          <strong>Seafile</strong><span class="service-desc">Облако, но с арендой у самого себя.</span><span class="service-arrow">↗</span>
+        </a>
+        <a class="service-card card-ai" href="https://ai.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">05 / ИСКУССТВЕННЫЙ РАЗУМ</span><img src="img/icons/openwebui.svg" alt="" class="service-icon">
+          <strong>Open WebUI</strong><span class="service-desc">Думает за меня. Иногда лучше.</span><span class="service-arrow">↗</span>
+        </a>
+        <a class="service-card card-proxmox" href="https://proxmox.n1puts.ru" target="_blank" rel="noopener">
+          <span class="service-number">06 / МАТРЁШКА</span><img src="img/icons/proxmox.svg" alt="" class="service-icon">
+          <strong>Proxmox</strong><span class="service-desc">Виртуалки внутри виртуальной тревоги.</span><span class="service-arrow">↗</span>
+        </a>
+      </div>
+      <div class="service-footer"><span>6 СЕРВИСОВ</span><span>0 ГАРАНТИЙ</span><span>∞ ПРИЧИН НЕ СПАТЬ</span></div>
+    </section>
+
+    <section class="reactor-section">
+      <div class="reactor-copy"><p class="section-kicker">/// НЕОБОСНОВАННЫЙ РИСК</p><h2>РЕАКТОР<br><span>ХУЙНИ</span></h2><p>Зажми кнопку. Не спрашивай зачем.</p><div class="reactor-result" id="reactor-result">ЗАРЯД: 0% — ВСЁ ПО ПЛАНУ</div></div>
+      <div class="reactor-box">
+        <div class="reactor-top"><span>CORE.EXE</span><span class="blink">● LIVE</span></div>
+        <div class="reactor-core" id="reactor-core">☢</div>
+        <div class="charge-track"><div id="charge-fill"></div></div>
+        <button class="reactor-button" id="reactor-button" type="button">ЗАЖМИ И ДЕРЖИ</button>
+        <small>предупреждение: ничего полезного не произойдёт</small>
+      </div>
+    </section>
+
+    <section class="counter-section">
+      <div class="counter-card"><span class="counter-label">ХУЙНОМЕТР</span><strong id="nonsense-counter">22 484</strong><span>единиц сомнительности / сек</span></div>
+      <button class="counter-card counter-clicker" id="clicker" type="button"><span class="counter-label">КЛИКНИ МЕНЯ</span><strong id="click-count">0</strong><span>кликов до просветления</span><i>+1 к карме за клик</i></button>
+      <div class="counter-card rank-card"><span class="counter-label">ТВОЁ ЗВАНИЕ</span><strong id="rank">НУЛЁВЫЙ</strong><span id="rank-caption">пока что никто</span></div>
+    </section>
+
+    <section class="oracle-section">
+      <div class="oracle-panel"><p class="section-kicker">/// ОРАКУЛ СОМНИТЕЛЬНЫХ РЕШЕНИЙ</p><h2>ЧТО ДЕЛАТЬ<br><span>С ЖИЗНЬЮ?</span></h2><p class="oracle-answer" id="oracle-answer">Нажми кнопку. Ответственность на тебе.</p><button class="chaos-button primary" id="oracle-button" type="button">ПОЛУЧИТЬ МУДРОСТЬ ↗</button></div>
+      <div class="oracle-decoration" aria-hidden="true">???</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><a class="mini-logo" href="#home">n1puts<span>.ru</span></a><span>СДЕЛАНО СОМНИТЕЛЬНО, НО С ЛЮБОВЬЮ К СЕРВЕРУ</span></div>
     <div class="socials">
-      <a href="https://t.me/peredoz2015" target="_blank" rel="noopener">
-        <img src="img/icons/telegram.svg" alt="">
-        <span>Telegram</span>
-      </a>
-      <a href="https://vk.com/stup1n" target="_blank" rel="noopener">
-        <img src="img/icons/vk.svg" alt="">
-        <span>VK</span>
-      </a>
+      <a href="https://t.me/peredoz2015" target="_blank" rel="noopener"><img src="img/icons/telegram.svg" alt=""> Telegram ↗</a>
+      <a href="https://vk.com/stup1n" target="_blank" rel="noopener"><img src="img/icons/vk.svg" alt=""> VK ↗</a>
+      <button id="footer-secret" type="button">НЕ НАЖИМАТЬ</button>
     </div>
-    <div class="copyright">© <span id="year"></span> n1puts.ru</div>
+    <div class="footer-bottom"><span>© <span id="year"></span> N1PUTS.RU</span><span>СОСТОЯНИЕ РАЗРАБОТЧИКА: <b id="dev-state">НАЧИНАЮЩИЙ МАГ</b></span><span>НЕ ЯВЛЯЕТСЯ СОВЕТОМ СИСАДМИНА</span></div>
   </footer>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="chaos-overlay" id="chaos-overlay" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>
