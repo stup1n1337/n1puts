@@ -93,7 +93,7 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
 </div>
 <script>
 (() => {
- const API='/api/click.php', MEMES='/memes/memes.json';
+ const API='/api/click.php', MEMES='/memes/';
  const count=document.getElementById('count'), click=document.getElementById('clickButton');
  const more=document.getElementById('moreButton'), frame=document.getElementById('memeFrame');
  let files=[], previous='';
@@ -111,27 +111,30 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
    try {
      const r=await fetch(MEMES,{cache:'no-store'});
      if(!r.ok) throw new Error('HTTP '+r.status);
-     const d=await r.json();
-     files=Array.isArray(d)?d:(Array.isArray(d.files)?d.files:[]);
-   } catch(e) { files=[]; console.error('Не удалось загрузить /memes/memes.json:',e); }
+     const html=await r.text();
+     const doc=new DOMParser().parseFromString(html,'text/html');
+     files=[...doc.querySelectorAll('a[href]')]
+       .map(a=>a.getAttribute('href'))
+       .filter(href=>href && !href.startsWith('?') && !href.startsWith('/') && !href.startsWith('../') && /\.(jpe?g|png|gif|webp|avif|bmp)$/i.test(href))
+       .map(href=>decodeURIComponent(href.split('/').pop()));
+   } catch(e) { files=[]; console.error('Не удалось просканировать /memes/:',e); }
  }
  function next() {
    if(!files.length) {
      frame.replaceChildren();
      const msg=document.createElement('div');
-     msg.textContent='Добавь имена файлов в /memes/memes.json';
+     msg.textContent='Картинки не найдены. Проверь список файлов в /memes/.';
      msg.style.cssText='padding:24px;color:#000;font:bold 14px Arial;text-align:center;overflow-wrap:anywhere';
-     frame.appendChild(msg);
-     return;
+     frame.appendChild(msg); return;
    }
    let a=files.filter(x=>x!==previous); if(!a.length)a=files;
    const f=a[Math.floor(Math.random()*a.length)]; previous=f;
    const img=document.createElement('img'); img.alt=''; img.loading='eager';
    img.onload=()=>frame.replaceChildren(img);
    img.onerror=()=>{frame.replaceChildren();const msg=document.createElement('div');msg.textContent='Не удалось открыть '+f;msg.style.cssText='padding:24px;color:#000;font:bold 14px Arial;overflow-wrap:anywhere';frame.appendChild(msg);};
-   img.src='/memes/'+f.split('/').map(encodeURIComponent).join('/');
+   img.src='/memes/'+encodeURIComponent(f);
  }
- more.addEventListener('click',async()=>{more.disabled=true;try{if(!files.length)await getFiles();next();}finally{more.disabled=false;}});
+ more.addEventListener('click',async()=>{more.disabled=true;try{await getFiles();next();}finally{more.disabled=false;}});
 
  const words=["n1puts.ru","ХУЙНЯ!!!","АХУЕТЬ","+1","ОЙ","ХУЙНЯ×2","N1PUTS","ЧТО?!","ЛОЛ","ЖЕСТЬ","ААА"];
  const colors=["#ff0090","#ffe600","#00ffe1","#00ff2f","#ffffff","#7b00ff"];
