@@ -33,23 +33,60 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
 .meme-frame{display:flex;justify-content:center;align-items:center;margin-bottom:18px;position:relative;z-index:1}.meme-frame:empty{display:none}.meme-frame img{max-width:100%;max-height:60vh;object-fit:contain;border:5px solid #000;box-shadow:8px 8px 0 #00ff2f}
 .bottom-ticker{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:6px solid #ff0090;overflow:hidden;padding:8px 0;z-index:5;white-space:nowrap;font-size:clamp(18px,2.2vw,30px);color:#ffe600;font-weight:900}.bottom-track{display:flex;gap:40px;width:max-content;animation:5.5s linear infinite slideR}.bottom-track span{flex:none}
 @media(max-width:700px){body{font-size:15px}main{gap:24px;padding-top:75px}.logo{-webkit-text-stroke:3px #000;text-shadow:4px 4px 0 #ff0090,8px 8px 0 #ffe600,12px 12px 0 #00ffe1,16px 16px 0 #7b00ff,20px 20px 0 #000}.panel{padding:18px 12px}.bottom-ticker{font-size:18px}}
+
+@keyframes fly {0%{transform:translate(-50%,-50%) scale(.2) rotate(0deg);opacity:1}100%{transform:translate(-50%,-320%) scale(2.4) rotate(30deg);opacity:0}}
+@keyframes blinky{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes popin{from{transform:scale(.2) rotate(-14deg);opacity:0}to{transform:scale(1) rotate(-2deg);opacity:1}}
+.site.is-chaos{animation:shake .18s linear infinite, hue 1.2s linear infinite!important}
+.panel-label{font-size:12px;letter-spacing:1px;color:#00ffe1;margin:-4px 0 8px;font-family:"Russo One",sans-serif}
+.live-line{display:flex;align-items:center;justify-content:center;gap:8px;color:#00ff2f;font:900 13px/1 "Russo One",sans-serif;margin:0 0 12px;text-shadow:2px 2px #000}
+.live-dot{width:10px;height:10px;border-radius:50%;background:#00ff2f;box-shadow:0 0 8px #00ff2f;animation:blinky .8s steps(1) infinite}
+.window-panel{padding:0!important;background:#c0c0c0!important;border:5px solid #050505!important;box-shadow:12px 12px 0 #000!important;transform:rotate(-1deg);color:#000}
+.window-title{height:48px;background:#000080;color:white;display:flex;align-items:center;justify-content:space-between;padding:5px 10px;font:900 20px "Russo One",sans-serif;text-align:left}
+.window-close{font:900 22px Arial,sans-serif;background:#c0c0c0;border:3px outset white;padding:1px 12px;box-shadow:none;cursor:pointer;color:#000}
+.window-content{padding:18px;background:#c0c0c0;color:#000}
+.window-content .action{font-size:20px;padding:10px 20px;background:#c0c0c0;border:4px outset white;box-shadow:none}
+.window-content .action:active{border-style:inset;transform:translate(1px,1px)}
+.meme-frame{min-height:130px;background:#eee;border:4px inset #ddd;padding:8px;margin-bottom:16px}
+.meme-frame:empty:before{content:"";display:block;min-height:100px}
+.meme-frame img{max-width:100%;max-height:55vh;object-fit:contain;border:0;box-shadow:none}
+.social-panel{background:#050505;border:5px solid #000;box-shadow:10px 10px 0 #7b00ff;padding:22px;width:min(780px,100%);text-align:center;animation:wobble 1.7s ease-in-out infinite}
+.social-title{font-size:clamp(22px,4vw,34px);color:#ffe600;-webkit-text-stroke:1px #000;text-shadow:4px 4px #ff0090;margin:0 0 20px}
+.social-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.social-link{display:inline-block;text-decoration:none;background:#ffe600;color:#000;border:5px solid #000;box-shadow:7px 7px #ff0090;padding:12px 18px;font:900 18px "Russo One",sans-serif;transition:transform .1s}
+.social-link:hover{transform:translate(-3px,-3px) rotate(-2deg);filter:hue-rotate(45deg)}
+@media(max-width:700px){.window-title{height:42px;font-size:17px}.window-content{padding:12px}.social-panel{padding:16px}.social-link{font-size:16px;padding:10px 12px}}
+
 </style></head>
 <body>
 <div class="site">
 <div class="bg-rays"></div><div class="scanlines"></div>
-<div class="top-ticker" aria-hidden="true"><div class="ticker-track"><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
+<div class="top-ticker" aria-hidden="true"><div class="ticker-track"><span>n1puts.ru n1puts.ru n1puts.ru n1puts.ru n1puts.ru</span><span>n1puts.ru n1puts.ru n1puts.ru n1puts.ru n1puts.ru</span></div></div>
 <main>
   <div class="logo-wrap"><h1 class="logo">n1puts.ru</h1></div>
   <section class="panel" aria-label="Кликер">
+    <div class="live-line"><span class="live-dot"></span>LIVE</div>
+    <div class="panel-label">ОБЩЕЕ КОЛИЧЕСТВО КЛИКОВ:</div>
     <div class="counter" id="count">…</div>
     <button class="action" id="clickButton" type="button">КЛИК</button>
   </section>
-  <section class="panel" aria-label="Мемы">
-    <div class="meme-frame" id="memeFrame"></div>
-    <button class="action" id="moreButton" type="button">ЕЩЁ</button>
+  <section class="panel window-panel" aria-label="Мемы">
+    <div class="window-title"><span>hui.png</span><button class="window-close" id="closeMeme" type="button" aria-label="Закрыть">X</button></div>
+    <div class="window-content">
+      <div class="meme-frame" id="memeFrame"></div>
+      <button class="action" id="moreButton" type="button">ЕЩЁ</button>
+    </div>
+  </section>
+  <section class="social-panel" aria-label="Мои соц сети">
+    <h2 class="social-title">МОИ СОЦ СЕТИ</h2>
+    <div class="social-links">
+      <a class="social-link" href="https://t.me/peredoz2015" target="_blank" rel="noopener noreferrer">TELEGRAM</a>
+      <a class="social-link" href="https://www.youtube.com/@n1puts" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
+      <a class="social-link" href="https://steamcommunity.com/id/n1puts/" target="_blank" rel="noopener noreferrer">STEAM</a>
+    </div>
   </section>
 </main>
-<div class="bottom-ticker" aria-hidden="true"><div class="bottom-track"><span>n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
+<div class="bottom-ticker" aria-hidden="true"><div class="bottom-track"><span>n1puts.ru n1puts.ru n1puts.ru n1puts.ru</span><span>n1puts.ru n1puts.ru n1puts.ru n1puts.ru</span></div></div>
 </div>
 <script>
 (() => {
@@ -63,6 +100,46 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
  async function getFiles() { try { const r=await fetch(MEMES,{cache:'no-store'}); if(!r.ok)throw 0;const d=await r.json();files=Array.isArray(d)?d:(d.files||[]); }catch(e){files=[];} }
  function next() { if(!files.length){frame.replaceChildren();return;}let a=files.filter(x=>x!==previous);if(!a.length)a=files;const f=a[Math.floor(Math.random()*a.length)];previous=f;const img=document.createElement('img');img.src='/memes/'+f.split('/').map(encodeURIComponent).join('/');img.alt='';img.onerror=()=>img.remove();frame.replaceChildren(img); }
  more.addEventListener('click',async()=>{more.disabled=true;if(!files.length)await getFiles();next();more.disabled=false;});
+
+ const words=["n1puts.ru","ХУЙНЯ!!!","ДИПСИК!","АХУЕТЬ","+1","ОЙ","ХУЙНЯ×2","N1PUTS","ЧТО?!","ЛОЛ"];
+ const colors=["#ff0090","#ffe600","#00ffe1","#00ff2f","#ffffff","#7b00ff"];
+ let audioCtx=null,lastHit=0,chaosTimer=null;
+ function beep(freq){
+   try{
+     audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+     const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+     osc.type="square";osc.frequency.value=freq;gain.gain.value=.045;
+     osc.connect(gain);gain.connect(audioCtx.destination);
+     osc.start();osc.stop(audioCtx.currentTime+.075);
+   }catch(e){}
+ }
+ function burst(x,y){
+   const now=Date.now(),combo=now-lastHit<900;lastHit=now;
+   beep(300+Math.random()*500+(combo?350:0));
+   const n=3+Math.floor(Math.random()*4);
+   for(let i=0;i<n;i++){
+     const el=document.createElement('div');
+     el.textContent=words[Math.floor(Math.random()*words.length)];
+     el.style.cssText='position:fixed;left:'+(x+(Math.random()-.5)*240)+'px;top:'+(y+(Math.random()-.5)*140)+'px;z-index:99;pointer-events:none;white-space:nowrap;font-family:Unbounded,"Russo One",sans-serif;font-weight:900;font-size:'+(28+Math.random()*55)+'px;color:'+colors[Math.floor(Math.random()*colors.length)]+';-webkit-text-stroke:2px #000;text-shadow:4px 4px #000;animation:fly 1.5s ease-out forwards;transform:rotate('+(Math.random()-.5)*45+'deg)';
+     document.body.appendChild(el);setTimeout(()=>el.remove(),1550);
+   }
+   const site=document.querySelector('.site');site.classList.add('is-chaos');
+   clearTimeout(chaosTimer);chaosTimer=setTimeout(()=>site.classList.remove('is-chaos'),650);
+ }
+ document.querySelector('.site').addEventListener('click',e=>{
+   if(e.target.closest('a')||e.target.id==='closeMeme')return;
+   burst(e.clientX,e.clientY);
+ });
+ document.getElementById('closeMeme').addEventListener('click',()=>{
+   const frame=document.getElementById('memeFrame');
+   frame.innerHTML='<div style="font:900 20px Arial;color:#000;padding:24px">Файл закрыт.</div>';
+   document.getElementById('moreButton').textContent='ОТКРЫТЬ';
+ });
+ document.getElementById('moreButton').addEventListener('click',()=>{
+   document.getElementById('moreButton').textContent='ЕЩЁ';
+   if(document.getElementById('memeFrame').querySelector('div'))document.getElementById('memeFrame').replaceChildren();
+ });
+
  refresh();getFiles();
 })();
 </script>
