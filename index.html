@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>n1puts.ru</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&display=swap" rel="stylesheet">
 
 <style>
-html,body{margin:0;padding:0;background:#0a0208;overflow-x:hidden}
+html,body{margin:0;padding:0;background:#0a0208;overflow-x:hidden;touch-action:pan-y;overscroll-behavior-x:none}
 *{box-sizing:border-box}
 @keyframes strobe{0%{background:#ff0090}12%{background:#00ffe1}25%{background:#ffe600}37%{background:#7b00ff}50%{background:#00ff2f}62%{background:#ff3b00}75%{background:#00ffe1}87%{background:#ff00d4}100%{background:#ff0090}}
-@keyframes spin3d{0%{transform:rotateX(0deg) rotateZ(-4deg) scale(1)}25%{transform:rotateX(18deg) rotateZ(5deg) scale(1.06)}50%{transform:rotateX(0deg) rotateZ(-6deg) scale(.96)}75%{transform:rotateX(-16deg) rotateZ(4deg) scale(1.08)}100%{transform:rotateX(0deg) rotateZ(-4deg) scale(1)}}
+@keyframes spin3d{0%{transform:rotateX(0deg) rotateZ(-4deg)}25%{transform:rotateX(18deg) rotateZ(5deg)}50%{transform:rotateX(0deg) rotateZ(-6deg)}75%{transform:rotateX(-16deg) rotateZ(4deg)}100%{transform:rotateX(0deg) rotateZ(-4deg)}}
 
 
 @keyframes hue{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
@@ -31,7 +31,7 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
 .counter{font-family:Unbounded,"Russo One",sans-serif;font-weight:900;font-size:clamp(40px,7vw,66px);color:#00ffe1;text-shadow:4px 4px 0 #ff0090;margin:0 0 18px}
 .combo-line{display:inline-block;margin:0 auto 18px;padding:7px 14px;background:#000;color:#ffe600;border:2px dashed #ff0090;font:900 clamp(15px,2.2vw,20px)/1.2 "Russo One",sans-serif;text-shadow:2px 2px #7b00ff;min-width:150px}
 .combo-line.active{animation:pulse .25s ease-in-out infinite;box-shadow:0 0 12px #ff0090}
-.action{position:relative;z-index:1;font-family:"Russo One",sans-serif;font-size:clamp(20px,4vw,28px);padding:12px 26px;background:#ffe600;color:#000;border:5px solid #000;box-shadow:8px 8px 0 #ff0090;cursor:pointer}.action:active{transform:translate(4px,4px);box-shadow:4px 4px 0 #ff0090}.action:disabled{opacity:.65}
+.action{touch-action:manipulation;position:relative;z-index:1;font-family:"Russo One",sans-serif;font-size:clamp(20px,4vw,28px);padding:12px 26px;background:#ffe600;color:#000;border:5px solid #000;box-shadow:8px 8px 0 #ff0090;cursor:pointer}.action:active{transform:translate(4px,4px);box-shadow:4px 4px 0 #ff0090}.action:disabled{opacity:.65}
 .meme-frame{display:flex;justify-content:center;align-items:center;margin-bottom:18px;position:relative;z-index:1}.meme-frame:empty{display:none}.meme-frame img{max-width:100%;max-height:60vh;object-fit:contain;border:5px solid #000;box-shadow:8px 8px 0 #00ff2f}
 
 @media(max-width:700px){body{font-size:15px}main{gap:24px;padding-top:75px}.logo{-webkit-text-stroke:3px #000;text-shadow:4px 4px 0 #ff0090,8px 8px 0 #ffe600,12px 12px 0 #00ffe1,16px 16px 0 #7b00ff,20px 20px 0 #000}.panel{padding:18px 12px}}
@@ -52,10 +52,10 @@ main{position:relative;z-index:1;padding:clamp(70px,14vw,120px) clamp(12px,4vw,2
 .meme-frame{min-height:130px;background:#eee;border:4px inset #ddd;padding:8px;margin-bottom:16px}
 .meme-frame:empty:before{content:"";display:block;min-height:100px}
 .meme-frame img{max-width:100%;max-height:55vh;object-fit:contain;border:0;box-shadow:none}
-.social-panel{background:#050505;border:5px solid #000;box-shadow:10px 10px 0 #7b00ff;padding:22px;width:min(780px,100%);text-align:center;animation:wobble .55s ease-in-out infinite}
+.social-panel{background:#050505;border:5px solid #000;box-shadow:10px 10px 0 #7b00ff;padding:22px;width:min(780px,100%);text-align:center;animation:none!important;transform:none!important}
 .social-title{font-size:clamp(22px,4vw,34px);color:#ffe600;-webkit-text-stroke:1px #000;text-shadow:4px 4px #ff0090;margin:0 0 20px}
 .social-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
-.social-link{display:inline-block;text-decoration:none;background:#ffe600;color:#000;border:5px solid #000;box-shadow:7px 7px #ff0090;padding:12px 18px;font:900 18px "Russo One",sans-serif;transition:transform .1s}
+.social-link{display:inline-block;text-decoration:none;background:#ffe600;color:#000;border:5px solid #000;box-shadow:7px 7px #ff0090;padding:12px 18px;font:900 18px "Russo One",sans-serif;transition:transform .1s;touch-action:manipulation}
 .social-link:hover{transform:translate(-3px,-3px) rotate(-2deg);filter:hue-rotate(45deg)}
 @media(max-width:700px){.window-title{height:42px;font-size:17px}.window-content{padding:12px}.social-panel{padding:16px}.social-link{font-size:16px;padding:10px 12px}}
 
