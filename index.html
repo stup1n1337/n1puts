@@ -15,7 +15,6 @@
   <header class="topbar">
     <nav class="nav">
       <a class="active" href="/">главная</a>
-      <a href="/services/">сервисы</a>
     </nav>
   </header>
 
@@ -30,7 +29,7 @@
 
     <section class="meme-window" aria-label="Случайный мем">
       <div class="window-bar">
-        <span>HUI.PNG</span><span class="window-center">ЛОКАЛЬНАЯ КОЛЛЕКЦИЯ</span><span class="window-dot">● ● ●</span>
+        <span>hui.png</span><span class="window-dot">● ● ●</span>
       </div>
       <div class="meme-stage" id="memeStage">
         <div class="meme-empty" id="memeEmpty">
@@ -41,7 +40,6 @@
         <img id="memeImage" alt="Случайный мем из коллекции" hidden>
       </div>
       <div class="meme-controls">
-        <span class="meme-counter" id="memeCounter">MEME 000</span>
         <button class="button button-yellow" id="nextMeme" type="button">ЕЩЁ</button>
       </div>
     </section>
@@ -50,10 +48,12 @@
       <h2>ДОЛБАЕБЫ НАКЛИКАЛИ:</h2>
       <div class="global-count" id="globalCount" aria-live="polite">ЗАГРУЗКА...</div>
       <button class="global-click-button" id="globalClick" type="button">НАЖМИ МЕНЯ</button>
-      <p class="clicker-footnote" id="clickerStatus">ОДИН СЧЁТЧИК НА ВСЕХ. КАЖДЫЙ КЛИК В ИСТОРИЮ.</p>
+      <div class="clicker-actions"><button class="global-click-button chaos-toggle" id="chaosToggle" type="button" aria-pressed="false">ВАКХАНАЛИЯ</button></div>
+      <p class="clicker-footnote" id="clickerStatus">СЧЁТЧИК ОБЩИЙ · LIVE</p>
     </section>
   </main>
 
+  <div id="chaosOverlay" class="chaos-overlay" aria-hidden="true"></div>
   <footer class="social-footer">
     
     <div class="social-links">

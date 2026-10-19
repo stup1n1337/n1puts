@@ -3,7 +3,6 @@
   const empty = document.getElementById("memeEmpty");
   const stage = document.getElementById("memeStage");
   const button = document.getElementById("nextMeme");
-  const counter = document.getElementById("memeCounter");
   if (!img || !button) return;
 
   let memes = [];
@@ -22,7 +21,6 @@
     if (!memes.length) {
       empty.hidden = false;
       img.hidden = true;
-      counter.textContent = "MEME 000";
       return;
     }
     if (memes.length === 1) current = 0;
@@ -34,7 +32,6 @@
     img.onload = () => { img.hidden = false; empty.hidden = true; };
     img.onerror = () => { img.hidden = true; empty.hidden = false; };
     img.src = "/img/memes/" + memes[current].split("/").map(encodeURIComponent).join("/");
-    counter.textContent = "MEME " + String(current + 1).padStart(3, "0");
     stage.classList.remove("meme-refresh");
     void stage.offsetWidth;
     stage.classList.add("meme-refresh");
@@ -56,11 +53,11 @@
         const data = await response.json();
         globalCount.textContent = fmt(data.count);
         globalCount.classList.remove("count-error");
-        if (clickerStatus) clickerStatus.textContent = "СЧЁТЧИК ОБЩИЙ · ОБНОВЛЯЕТСЯ В РЕАЛЬНОМ ВРЕМЕНИ";
+        if (clickerStatus && !document.body.classList.contains("chaos-mode")) clickerStatus.textContent = "СЧЁТЧИК ОБЩИЙ · LIVE";
       } catch (e) {
         globalCount.textContent = "НЕТ СВЯЗИ";
         globalCount.classList.add("count-error");
-        if (clickerStatus) clickerStatus.textContent = "НУЖЕН PHP API: ПРОВЕРЬ /api/click.php";
+        if (clickerStatus) clickerStatus.textContent = "НЕТ СВЯЗИ С ХУЙНЁЙ";
       }
     }
     globalClick.addEventListener("click", async () => {
@@ -80,7 +77,7 @@
         globalCount.textContent = fmt(data.count);
         globalCount.classList.remove("count-error");
         globalCount.animate([{transform:"scale(1)"},{transform:"scale(1.09) rotate(-1deg)"},{transform:"scale(1)"}], {duration:230});
-        if (clickerStatus) clickerStatus.textContent = "ЗАСЧИТАНО. ХУЙНЯ СТАНОВИТСЯ БОЛЬШЕ.";
+        if (clickerStatus && !document.body.classList.contains("chaos-mode")) clickerStatus.textContent = "ЗАСЧИТАНО. ХУЙНЯ СТАНОВИТСЯ БОЛЬШЕ.";
       } catch (e) {
         if (clickerStatus) clickerStatus.textContent = "КЛИК НЕ ЗАСЧИТАН: API НЕ ОТВЕЧАЕТ";
       } finally {
@@ -95,4 +92,58 @@
     setInterval(refreshCount, 2000);
   }
 
+})();
+
+// Вакханалия: включаем намеренно бессмысленные визуальные эффекты.
+(() => {
+  const toggle = document.getElementById("chaosToggle");
+  const overlay = document.getElementById("chaosOverlay");
+  const count = document.getElementById("globalCount");
+  const status = document.getElementById("clickerStatus");
+  if (!toggle || !overlay) return;
+  const words = ["ДОЛБАЕБЫ", "ХУЙНЯ", "ПОШЕЛ НАХУЙ", "ЧТО ЗА ХУЙНЯ", "ВСЁ ПИЗДЕЦ", "ОБНАРУЖЕН ДОЛБАЕБ", "ХУЙ ЗНАЕТ", "АХУЕТЬ"];
+  let interval = null;
+  let spawnTimer = null;
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  function spawnWord() {
+    const el = document.createElement("div");
+    el.className = "chaos-word";
+    el.textContent = pick(words);
+    el.style.left = Math.random() * 82 + 4 + "%";
+    el.style.top = Math.random() * 78 + 5 + "%";
+    el.style.setProperty("--rot", (Math.random() * 36 - 18) + "deg");
+    el.style.setProperty("--hue", Math.floor(Math.random() * 360));
+    overlay.appendChild(el);
+    setTimeout(() => el.remove(), 1700 + Math.random() * 1200);
+  }
+  function setChaos(on) {
+    document.body.classList.toggle("chaos-mode", on);
+    toggle.setAttribute("aria-pressed", String(on));
+    toggle.textContent = on ? "ВЫРУБИТЬ ЭТОТ ПИЗДЕЦ" : "ВАКХАНАЛИЯ";
+    overlay.setAttribute("aria-hidden", String(!on));
+    if (on) {
+      if (status) status.textContent = "ПОШЕЛ НАХУЙ · РЕЖИМ ВКЛЮЧЁН";
+      spawnWord();
+      interval = setInterval(() => {
+        document.body.classList.toggle("chaos-flash");
+        if (Math.random() > .28) spawnWord();
+        if (count && Math.random() > .6) count.style.transform = `rotate(${Math.random()*8-4}deg) scale(${.9+Math.random()*.3})`;
+      }, 330);
+      spawnTimer = setInterval(spawnWord, 540);
+    } else {
+      clearInterval(interval); clearInterval(spawnTimer);
+      interval = spawnTimer = null;
+      document.body.classList.remove("chaos-flash");
+      if (count) count.style.transform = "";
+      overlay.replaceChildren();
+      if (status) status.textContent = "СЧЁТЧИК ОБЩИЙ · LIVE";
+    }
+  }
+  toggle.addEventListener("click", () => setChaos(!document.body.classList.contains("chaos-mode")));
+  document.getElementById("globalClick")?.addEventListener("click", () => {
+    if (document.body.classList.contains("chaos-mode")) {
+      spawnWord();
+      if (status) status.textContent = pick(words);
+    }
+  });
 })();

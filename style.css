@@ -358,3 +358,36 @@ body.party-mode .chaos-intro h1{animation:partyTitle .15s steps(2) infinite}
   .services-heading-row h1{font-size:clamp(42px,11vw,64px)}
   .service-icon{width:36px;height:36px}
 }
+
+
+/* V8: logo overlaps the complete sunset; only memes + clicker on the homepage. */
+.home-main{justify-content:flex-start;padding-top:0;padding-bottom:48px;overflow:visible;min-height:0}
+.home-main .sun-disc{display:block!important;z-index:0;top:10px;width:clamp(205px,24vw,270px);height:clamp(205px,24vw,270px);opacity:1;mask-image:linear-gradient(to bottom,black 0%,black 54%,transparent 54%,transparent 58%,black 58%,black 63%,transparent 63%,transparent 67%,black 67%,black 72%,transparent 72%,transparent 76%,black 76%,black 81%,transparent 81%)!important}
+.home-main .hero-logo{position:relative;z-index:2;margin-top:clamp(158px,19vw,202px);margin-bottom:0;transform:rotate(-2deg) translateY(-36px)}
+.home-main .logo-face,.home-main .logo-shadow{font-size:clamp(48px,8.8vw,112px)}
+.home-main .meme-window{position:relative;z-index:3;margin-top:-20px;width:min(660px,100%)}
+.home-main .meme-stage{height:clamp(190px,28vw,300px)}
+.meme-controls{justify-content:flex-end}
+.global-clicker{margin-top:64px}
+.clicker-actions{display:flex;justify-content:center;margin:0 auto;gap:10px}
+.global-clicker .global-click-button{display:inline-block}
+.global-clicker .chaos-toggle{margin:18px auto 0;padding:9px 13px;font:900 10px var(--display);box-shadow:4px 4px 0 var(--pink);background:#171019;color:var(--cyan);border:1px solid var(--cyan)}
+.clicker-footnote{font-size:9px;color:#9e879c;letter-spacing:.04em;margin:18px 8px 0}
+.social-footer{justify-content:center;border-top-color:rgba(255,22,143,.28);padding:14px}
+.social-links a{font-size:9px;opacity:.68;border:1px solid rgba(0,240,210,.35);padding:8px 11px;color:var(--cyan)}
+.social-links a:hover{opacity:1}
+.chaos-overlay{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden;display:none}
+body.chaos-mode .chaos-overlay{display:block}
+.chaos-word{position:absolute;max-width:90vw;padding:8px 11px;background:hsl(var(--hue) 100% 52%);color:#080508;border:3px solid #080508;box-shadow:5px 5px 0 var(--pink);font:900 clamp(16px,3vw,34px)/1 var(--display);letter-spacing:-.05em;white-space:nowrap;transform:rotate(var(--rot));animation:chaosWordFly 1.9s cubic-bezier(.15,.8,.25,1) forwards}
+@keyframes chaosWordFly{0%{opacity:0;scale:.1;filter:hue-rotate(0)}12%{opacity:1;scale:1.2}55%{opacity:1;translate:0 -20px;filter:hue-rotate(180deg)}100%{opacity:0;scale:.7;translate:0 -110px;filter:hue-rotate(360deg)}}
+body.chaos-mode .home-main{animation:homeShake .16s steps(2) infinite}
+body.chaos-mode .hero-logo{animation:logoChaos .23s steps(2) infinite alternate}
+body.chaos-mode .meme-window,body.chaos-mode .global-clicker{animation:boxChaos .25s steps(2) infinite alternate}
+body.chaos-flash .home-page{filter:hue-rotate(90deg)}
+body.chaos-mode .global-click-button{animation:buttonChaos .3s steps(2) infinite alternate}
+@keyframes homeShake{0%{translate:-2px 1px;rotate:-.15deg}100%{translate:3px -1px;rotate:.15deg}}
+@keyframes logoChaos{to{transform:rotate(4deg) translate(7px,-8px) skew(-3deg);filter:hue-rotate(90deg)}}
+@keyframes boxChaos{to{transform:rotate(1deg) translate(-3px,2px);filter:hue-rotate(35deg)}}
+@keyframes buttonChaos{to{transform:rotate(2deg) scale(1.06);filter:hue-rotate(120deg)}}
+@media(max-width:600px){.home-main .sun-disc{width:190px;height:190px;top:12px}.home-main .hero-logo{margin-top:155px;transform:rotate(-2deg) translateY(-30px)}.home-main .logo-face,.home-main .logo-shadow{font-size:clamp(43px,11vw,66px)}.home-main .meme-window{margin-top:-12px}.global-clicker{margin-top:48px}.chaos-word{white-space:normal}}
+@media(prefers-reduced-motion:reduce){body.chaos-mode .home-main,body.chaos-mode .hero-logo,body.chaos-mode .meme-window,body.chaos-mode .global-clicker,body.chaos-mode .global-click-button{animation:none}}
