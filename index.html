@@ -1,70 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0208">
-  <meta name="description" content="n1puts.ru — личный уголок интернета с сомнительной репутацией">
-  <title>n1puts.ru — НЕ ТРОГАЙ</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#100811">
+  <title>n1puts.ru — главная хуйня</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
 </head>
-<body>
-  <div class="noise" aria-hidden="true"></div>
-  
-
+<body class="home-page">
   <header class="topbar">
-    <a class="mini-logo" href="#" aria-label="На главную">n1puts<span>.ru</span></a>
-    <nav class="top-nav"><a href="services/">СЕРВИСЫ ↗</a></nav>
-    <a class="sound-toggle" href="services/">МОЯ ИНФРАСТРУКТУРА ↗</a>
+    <a class="wordmark-small" href="/">n1puts<span>.ru</span></a>
+    <nav class="nav">
+      <a class="active" href="/">главная</a>
+      <a href="/services/">сервисы</a>
+      <a href="/huynya/">хуйня</a>
+    </nav>
+    <span class="top-index">[ 01 / HOME ]</span>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <p class="eyebrow">ЛИЧНЫЙ САЙТ</p>
-      <div class="hero-title-wrap">
-        <div class="hero-shadow" aria-hidden="true">n1puts</div>
-        <h1 class="hero-title" id="hero-title"><span>n1puts</span><b>.ru</b></h1>
+  <main class="home-main">
+    <div class="eyebrow">ЛИЧНЫЙ САЙТ / БЕЗ ОСОБОЙ ПРИЧИНЫ</div>
+    <a class="hero-logo" href="/" aria-label="n1puts.ru">
+      <span class="logo-shadow" aria-hidden="true">n1puts.ru</span>
+      <span class="logo-face">n1puts<span>.ru</span></span>
+    </a>
+    <p class="hero-subtitle">место в интернете, которое зачем-то существует</p>
+
+    <section class="meme-window" aria-label="Случайный мем">
+      <div class="window-bar">
+        <span>MEME.DLL</span><span class="window-center">ЛОКАЛЬНАЯ КОЛЛЕКЦИЯ</span><span class="window-dot">● ● ●</span>
       </div>
-      <p class="hero-subtitle">добро пожаловать в <span>цифровую ошибку</span></p>
-      <p class="hero-caption" id="hero-caption">всё работает локально. в основном.</p>
-      <div class="hero-actions">
-        <a class="chaos-button primary" href="services/">СМОТРЕТЬ СЕРВИСЫ <span>↗</span></a>
-        <button class="chaos-button" id="randomize" type="button">ЕЩЁ ОДНУ <span>✳</span></button>
+      <div class="meme-stage" id="memeStage">
+        <div class="meme-empty" id="memeEmpty">
+          <span class="empty-mark">?</span>
+          <strong>КОЛЛЕКЦИЯ ПОКА ПУСТА</strong>
+          <span>Закинь свои картинки в <code>img/memes/</code></span>
+        </div>
+        <img id="memeImage" alt="Случайный мем из коллекции" hidden>
+      </div>
+      <div class="meme-controls">
+        <span class="meme-counter" id="memeCounter">MEME 000</span>
+        <button class="button button-yellow" id="nextMeme" type="button">ЕЩЁ ХУЙНИ ↗</button>
       </div>
     </section>
-
-    <section class="meme-zone" aria-label="Случайная картинка">
-      <div class="meme-card" id="meme-card" tabindex="0" role="button" aria-label="Показать другую картинку">
-        <div class="meme-topline"><span>RANDOM.JPG</span><span id="meme-index">КОЛЛЕКЦИЯ</span></div>
-        <div class="meme-content image-meme-content"><img id="meme-image" src="" alt="" hidden><div class="meme-empty" id="meme-empty">Добавь картинки в <code>img/memes/</code></div></div>
-        <div class="meme-bottom"><span>КЛИКНИ ДЛЯ СЛЕДУЮЩЕЙ</span><span>↻</span></div>
-      </div>
-    </section>
-
-    <section class="counter-section">
-      <div class="counter-card"><span class="counter-label">ХУЙНОМЕТР</span><strong id="nonsense-counter">22 484</strong><span>единиц сомнительности / сек</span></div>
-      <button class="counter-card counter-clicker" id="clicker" type="button"><span class="counter-label">КЛИКНИ МЕНЯ</span><strong id="click-count">0</strong><span>кликов до просветления</span><i>+1 к карме за клик</i></button>
-      <div class="counter-card rank-card"><span class="counter-label">ТВОЁ ЗВАНИЕ</span><strong id="rank">НУЛЁВЫЙ</strong><span id="rank-caption">пока что никто</span></div>
-    </section>
-
-    <section class="quote-section"><span class="quote-mark">“</span><blockquote>потакание сиюминутным страстям плотским дороже последствий.</blockquote></section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-top"><a class="mini-logo" href="#home">n1puts<span>.ru</span></a><span>n1puts.ru</span></div>
-    <div class="socials">
-      <a href="https://t.me/peredoz2015" target="_blank" rel="noopener"><img src="img/icons/telegram.svg" alt=""> Telegram ↗</a>
-      <a href="https://vk.com/stup1n" target="_blank" rel="noopener"><img src="img/icons/vk.svg" alt=""> VK ↗</a>
-      
+  <footer class="social-footer">
+    <span class="footer-label">НАЙТИ МЕНЯ В ИНТЕРНЕТЕ</span>
+    <div class="social-links">
+      <a href="https://t.me/peredoz2015" target="_blank" rel="noopener noreferrer">TELEGRAM ↗</a>
+      <a href="https://vk.com/stup1n" target="_blank" rel="noopener noreferrer">VK ↗</a>
     </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> N1PUTS.RU</span><span>НЕ ЯВЛЯЕТСЯ СОВЕТОМ СИСАДМИНА</span></div>
   </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="sticker-layer" id="sticker-layer" aria-hidden="true"></div><div class="chaos-overlay" id="chaos-overlay" aria-hidden="true"></div><button class="editor-float" id="editor-toggle" type="button" aria-expanded="false">EDIT.EXE</button><aside class="editor-window" id="editor-window" hidden><div class="editor-window-head"><b>EDIT.EXE</b><button id="editor-close" type="button" aria-label="Закрыть">×</button></div><label>Цвет акцента <input type="color" id="accent-picker" value="#ff0090"></label><label>Наклон логотипа <input type="range" id="tilt-picker" min="-8" max="8" value="-3"></label><button id="editor-reset" type="button">СБРОСИТЬ</button></aside>
-  <script src="script.js"></script>
 </body>
 </html>

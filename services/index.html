@@ -1,35 +1,59 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f0e8"><title>Сервисы — n1puts.ru</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../style.css"></head><body class="services-page"><header class="topbar"><a class="mini-logo" href="../">n1puts<span>.ru</span></a><nav class="top-nav"><a href="../">← НА ГЛАВНУЮ</a></nav></header><main>    <section class="services-section" id="services">
-      <div class="section-heading">
-        <div><p class="section-kicker">/// МОЯ ИНФРАСТРУКТУРА</p><h2>СЕРВИСЫ<span>™</span></h2></div>
-        <div class="service-note">я это поднял<br>и теперь боюсь выключать</div>
-      </div>
-      <div class="service-grid">
-        <a class="service-card card-kuma" href="https://kuma.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">01 / БДИТЕЛЬНЫЙ</span><img src="img/icons/kuma.svg" alt="" class="service-icon">
-          <strong>Uptime Kuma</strong><span class="service-desc">Следит, как всё падает.</span><span class="service-arrow">↗</span>
-        </a>
-        <a class="service-card card-grafana" href="https://grafana.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">02 / КРАСИВЫЕ ГРАФИКИ</span><img src="img/icons/grafana.svg" alt="" class="service-icon">
-          <strong>Grafana</strong><span class="service-desc">Панель, чтобы тревожиться красиво.</span><span class="service-arrow">↗</span>
-        </a>
-        <a class="service-card card-immich" href="https://immich.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">03 / КОТИКИ</span><img src="img/icons/immich.svg" alt="" class="service-icon">
-          <strong>Immich</strong><span class="service-desc">Фотоархив великих свершений.</span><span class="service-arrow">↗</span>
-        </a>
-        <a class="service-card card-seafile" href="https://seafile.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">04 / ОБЛАКО</span><img src="img/icons/seafile.svg" alt="" class="service-icon">
-          <strong>Seafile</strong><span class="service-desc">Облако, но с арендой у самого себя.</span><span class="service-arrow">↗</span>
-        </a>
-        <a class="service-card card-ai" href="https://ai.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">05 / ИСКУССТВЕННЫЙ РАЗУМ</span><img src="img/icons/openwebui.svg" alt="" class="service-icon">
-          <strong>Open WebUI</strong><span class="service-desc">Думает за меня. Иногда лучше.</span><span class="service-arrow">↗</span>
-        </a>
-        <a class="service-card card-proxmox" href="https://proxmox.n1puts.ru" target="_blank" rel="noopener">
-          <span class="service-number">06 / МАТРЁШКА</span><img src="img/icons/proxmox.svg" alt="" class="service-icon">
-          <strong>Proxmox</strong><span class="service-desc">Виртуалки внутри виртуальной тревоги.</span><span class="service-arrow">↗</span>
-        </a>
-      </div>
-      <div class="service-footer"><span>6 СЕРВИСОВ</span><span>0 ГАРАНТИЙ</span><span>∞ ПРИЧИН НЕ СПАТЬ</span></div>
-    </section>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#100811">
+  <title>Сервисы — n1puts.ru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="services-page">
+  <header class="topbar">
+    <a class="wordmark-small" href="/">n1puts<span>.ru</span></a>
+    <nav class="nav">
+      <a href="/">главная</a>
+      <a class="active" href="/services/">сервисы</a>
+      <a href="/huynya/">хуйня</a>
+    </nav>
+    <span class="top-index">[ 02 / SERVICES ]</span>
+  </header>
 
-</main><footer class="footer"><div class="footer-top"><a class="mini-logo" href="../">n1puts<span>.ru</span></a><span>МОИ СЕРВИСЫ</span></div><div class="socials"><a href="https://t.me/peredoz2015" target="_blank" rel="noopener">Telegram ↗</a><a href="https://vk.com/stup1n" target="_blank" rel="noopener">VK ↗</a></div></footer></body></html>
+  <main class="services-main">
+    <div class="section-eyebrow">/// МОЯ ИНФРАСТРУКТУРА</div>
+    <div class="services-heading-row">
+      <h1>СЕРВИСЫ<span>™</span></h1>
+      <span class="services-count">06 / ONLINE</span>
+    </div>
+    <section class="service-grid" aria-label="Сервисы">
+      <a class="service-card card-yellow" href="https://kuma.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">01 / МОНИТОРИНГ</span><img src="/img/icons/kuma.svg" alt="" class="service-icon">
+        <h2>Uptime Kuma</h2><p>Мониторинг доступности.</p><span class="card-arrow">↗</span>
+      </a>
+      <a class="service-card card-cyan" href="https://grafana.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">02 / МЕТРИКИ</span><img src="/img/icons/grafana.svg" alt="" class="service-icon">
+        <h2>Grafana</h2><p>Графики и метрики.</p><span class="card-arrow">↗</span>
+      </a>
+      <a class="service-card card-pink" href="https://immich.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">03 / ФОТО</span><img src="/img/icons/immich.svg" alt="" class="service-icon">
+        <h2>Immich</h2><p>Моя фотоархивация.</p><span class="card-arrow">↗</span>
+      </a>
+      <a class="service-card card-green" href="https://seafile.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">04 / ФАЙЛЫ</span><img src="/img/icons/seafile.svg" alt="" class="service-icon">
+        <h2>Seafile</h2><p>Файлы и синхронизация.</p><span class="card-arrow">↗</span>
+      </a>
+      <a class="service-card card-purple" href="https://ai.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">05 / ЛОКАЛЬНЫЙ ИИ</span><img src="/img/icons/openwebui.svg" alt="" class="service-icon">
+        <h2>Open WebUI</h2><p>Интерфейс для ИИ.</p><span class="card-arrow">↗</span>
+      </a>
+      <a class="service-card card-orange" href="https://proxmox.n1puts.ru" target="_blank" rel="noopener noreferrer">
+        <span class="card-number">06 / ВИРТУАЛИЗАЦИЯ</span><img src="/img/icons/proxmox.svg" alt="" class="service-icon">
+        <h2>Proxmox</h2><p>Виртуальные машины и контейнеры.</p><span class="card-arrow">↗</span>
+      </a>
+    </section>
+    <div class="services-bottomline"><span>6 СЕРВИСОВ</span><span>НАЖМИ, ЧТОБЫ ОТКРЫТЬ ↗</span></div>
+  </main>
+</body>
+</html>
