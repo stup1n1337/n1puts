@@ -65,4 +65,47 @@
   hue.addEventListener("input", setHue);
   $("randomColor").addEventListener("click", () => { hue.value = Math.floor(Math.random() * 361); setHue(); });
   render();
+
+  // Небольшая управляемая вакханалия: окна, случайные сообщения и тревожная кнопка.
+  document.querySelectorAll(".popup-close").forEach(btn => btn.addEventListener("click", () => {
+    const popup = btn.closest(".fake-popup");
+    popup.classList.add("popup-dismissed");
+    setTimeout(() => { popup.classList.remove("popup-dismissed"); popup.classList.add("popup-reappear"); }, 2600);
+    setTimeout(() => popup.classList.remove("popup-reappear"), 3400);
+  }));
+  document.querySelectorAll(".popup-confirm").forEach(btn => btn.addEventListener("click", () => {
+    btn.textContent = "ХУЙНЯ ПРИНЯТА";
+    btn.closest(".fake-popup").classList.add("popup-shake");
+    setTimeout(() => btn.closest(".fake-popup")?.classList.remove("popup-shake"), 600);
+  }));
+  const oracleAnswers = ["ХУЙНЯ БУДЕТ", "НЕ СЕГОДНЯ. ИЛИ СЕГОДНЯ", "СРОЧНО ДОБАВЬ ХУЙНИ", "ПРИЧИНА НЕИЗВЕСТНА", "ВСЁ ИДЁТ ПО ХУЙНЕ", "ОТВЕТ: ХУЙНЯ"];
+  $("oracleButton")?.addEventListener("click", () => {
+    $("oracleText").textContent = oracleAnswers[Math.floor(Math.random() * oracleAnswers.length)];
+    $("oracleText").animate([{transform:"scale(1)"},{transform:"scale(1.15) rotate(-2deg)"},{transform:"scale(1)"}], {duration:350});
+  });
+  const messages = ["ХУЙНЯ ДИСПИК ХУЙНЯ", "146% ХУЙНИ", "НЕ ТРОГАЙ ХУЙНЮ", "ХУЙНЯ УЖЕ ЗДЕСЬ", "ОШИБКА: СЛИШКОМ МНОГО ХУЙНИ", "ВСЁ НОРМАЛЬНО (НЕТ)"];
+  const popMessage = $("popMessage");
+  function newMessage() {
+    if (!popMessage) return;
+    popMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+    popMessage.style.left = (8 + Math.random() * 55) + "%";
+    popMessage.style.top = (10 + Math.random() * 75) + "%";
+    popMessage.style.setProperty("--tilt", (Math.random() * 18 - 9) + "deg");
+    popMessage.classList.remove("message-pop");
+    void popMessage.offsetWidth;
+    popMessage.classList.add("message-pop");
+  }
+  $("dontPress")?.addEventListener("click", () => {
+    document.body.classList.add("party-mode", "glitch-mode");
+    newMessage();
+    setTimeout(() => document.body.classList.remove("party-mode", "glitch-mode"), 2200);
+    $("dontPress").textContent = ["Я ЖЕ СКАЗАЛ НЕ НАЖИМАТЬ", "ХУЙНЯ АКТИВИРОВАНА", "ПОЗДРАВЛЯЮ, ТЫ НАЖАЛ"][Math.floor(Math.random()*3)];
+  });
+  setInterval(newMessage, 7000);
+  setTimeout(() => {
+    const popup = $("popupTwo");
+    if (popup) popup.classList.add("popup-attention");
+    setTimeout(() => popup?.classList.remove("popup-attention"), 1000);
+  }, 5000);
+
 })();
