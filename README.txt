@@ -1,8 +1,13 @@
-n1puts.ru
+Мемы без PHP
 
-index.html — главная страница.
-memes/ — положите сюда jpg/jpeg/png/gif/webp/avif.
-api-memes.php нужно установить как /var/www/n1puts.ru/api/memes.php.
-Для PHP endpoint необходим PHP-FPM/fastcgi: Caddy file_server сам по себе PHP не исполняет.
-Кликер использует /api/click.php: GET читает JSON {"count":132}, POST увеличивает счётчик.
-Соцсети и анимации включены в index.html.
+1. Залей index.html в /var/www/n1puts.ru/index.html
+2. Залей memes.json в /var/www/n1puts.ru/memes/memes.json
+3. Картинки положи в /var/www/n1puts.ru/memes/
+4. В memes.json перечисли имена файлов, например:
+[
+  "meme1.jpg",
+  "meme2.png",
+  "meme3.gif"
+]
+
+При добавлении или удалении картинки обновляй список в memes.json. Это обычный статический JSON, PHP и изменение Caddy не нужны. Кликер по-прежнему использует существующий /api/click.php.
