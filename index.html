@@ -3,48 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0208">
 <title>n1puts.ru</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+:root{color-scheme:dark;--pink:#ff0090;--cyan:#00ffe1;--yellow:#ffe600;--black:#0a0208}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--black);overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;color:#fff;isolation:isolate}
+body:before{content:"";position:fixed;inset:-30%;z-index:-3;background:conic-gradient(from 0deg at 50% 50%,#ff0090,#00ffe1,#ffe600,#7b00ff,#00ff2f,#ff3b00,#00ffe1,#ff00d4,#ff0090);filter:blur(18px);animation:spin 11s linear infinite, hue 18s linear infinite}
+body:after{content:"";position:fixed;inset:0;z-index:10;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 3px 4px);mix-blend-mode:multiply;opacity:.72}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes hue{to{filter:hue-rotate(360deg)}}
+@keyframes strobe{0%,100%{background:#ff0090}12%{background:#00ffe1}25%{background:#ffe600}37%{background:#7b00ff}50%{background:#00ff2f}62%{background:#ff3b00}75%{background:#00ffe1}87%{background:#ff00d4}}
+@keyframes logoMove{0%,100%{transform:perspective(600px) rotateX(0) rotateZ(-3deg) scale(1)}25%{transform:perspective(600px) rotateX(18deg) rotateZ(4deg) scale(1.04)}50%{transform:perspective(600px) rotateX(0) rotateZ(-5deg) scale(.98)}75%{transform:perspective(600px) rotateX(-14deg) rotateZ(3deg) scale(1.05)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes wobble{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+.ticker{position:relative;z-index:1;overflow:hidden;white-space:nowrap;background:#080008;color:#fff;border-block:3px solid var(--cyan);font-weight:900;text-shadow:2px 2px var(--pink);padding:9px 0;font-size:clamp(15px,2.2vw,24px)}.ticker-track{display:flex;width:max-content;animation:ticker 22s linear infinite}.ticker span{padding-right:1.3rem}
+main{width:min(920px,calc(100% - 28px));margin:clamp(24px,5vw,56px) auto 60px;position:relative;z-index:1}
+.logo{margin:0 auto 34px;text-align:center;font-size:clamp(42px,10vw,100px);line-height:1.05;font-weight:1000;letter-spacing:-.07em;color:#fff;text-transform:none;overflow-wrap:anywhere;text-shadow:4px 4px 0 #ff0090,-4px -3px 0 #00ffe1,0 0 22px #fff;animation:logoMove 4s ease-in-out infinite;filter:drop-shadow(0 0 10px #ff00b7)}
+.panel{position:relative;margin:22px 0;padding:clamp(18px,4vw,30px);border:4px ridge #fff;background:rgba(8,0,12,.9);box-shadow:8px 8px 0 #ff0090,-5px -5px 0 #00ffe1,0 0 28px rgba(255,0,144,.45);text-align:center;animation:wobble 7s ease-in-out infinite}
+.panel:before{content:"";position:absolute;inset:5px;border:1px dashed rgba(255,255,255,.45);pointer-events:none}
+.counter{font-family:monospace;font-size:clamp(38px,9vw,76px);font-weight:900;color:#00ffe1;text-shadow:3px 3px #ff0090;overflow-wrap:anywhere;margin:0 0 20px}
+button{position:relative;z-index:1;font:900 clamp(18px,3vw,25px)/1 Arial,sans-serif;text-transform:uppercase;color:#080008;background:var(--yellow);border:4px outset #fff;padding:14px 24px;cursor:pointer;box-shadow:5px 5px 0 var(--pink);transition:transform .08s,filter .08s}button:hover{filter:hue-rotate(90deg)}button:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--pink)}button:disabled{opacity:.65;cursor:wait}
+.meme-frame{min-height:120px;display:grid;place-items:center;margin:0 auto 22px;position:relative;z-index:1}.meme-frame img{display:block;max-width:100%;max-height:70vh;object-fit:contain;border:3px solid #fff;box-shadow:0 0 0 4px var(--pink),0 0 24px var(--cyan)}.meme-frame img[src$=".gif"]{image-rendering:auto}.meme-frame:empty{min-height:0;margin:0}
+@media(max-width:600px){main{width:calc(100% - 22px)}.logo{letter-spacing:-.06em;margin-bottom:28px}.panel{padding:20px 14px;margin:20px 0;border-width:3px}.ticker{padding:7px 0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:20s!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-<div class="background-wheel" aria-hidden="true"></div>
-<div class="scanlines" aria-hidden="true"></div>
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
-<main class="page">
-  <header class="hero">
-    <div class="logo-wrap" aria-label="n1puts.ru">
-      <div class="logo-line logo-top">n1puts</div>
-      <div class="logo-line logo-bottom">.ru</div>
-    </div>
-  </header>
-
-  <section class="meme-window" aria-label="Мемы">
-    <div class="window-bar"><span>hui.png</span><span class="window-dots">● ● ●</span></div>
-    <div class="meme-view" id="memeView">
-      <div class="empty-memes" id="emptyMemes">
-        <div class="question">?</div>
-        <strong>КОЛЛЕКЦИЯ ПОКА ПУСТА</strong>
-        <p>Закинь свои картинки в <code>img/memes/</code></p>
-      </div>
-      <img id="memeImage" alt="Мем" hidden>
-    </div>
-    <div class="meme-footer"><button class="small-button" id="nextMeme" type="button">ЕЩЁ</button></div>
+<main>
+  <h1 class="logo">n1puts.ru</h1>
+  <section class="panel" aria-label="Кликер">
+    <div id="count" class="counter" aria-live="polite">…</div>
+    <button id="clickButton" type="button">КЛИК</button>
   </section>
-
-  <section class="clicker" aria-label="Кликер">
-    <div class="clicker-top"><span class="live-dot"></span> LIVE</div>
-    <div class="clicker-content">
-      <h2>ДОЛБАЕБЫ НАКЛИКАЛИ:</h2>
-      <div class="counter" id="clickCount">0</div>
-      <button class="click-button" id="clickButton" type="button">НАЖМИ МЕНЯ</button>
-    </div>
+  <section class="panel" aria-label="Мемы">
+    <div class="meme-frame" id="memeFrame"></div>
+    <button id="moreButton" type="button">ЕЩЁ</button>
   </section>
-  <audio id="backgroundMusic" loop preload="none"></audio>
-  <label class="music-control" for="musicFile">МУЗЫКА <input id="musicFile" type="file" accept="audio/mpeg,audio/mp3,.mp3"></label>
 </main>
-<script src="script.js" defer></script>
+<script>
+(() => {
+  const API = '/api/click.php';
+  const MEMES_API = '/api/memes.php';
+  const countEl = document.getElementById('count');
+  const clickButton = document.getElementById('clickButton');
+  const moreButton = document.getElementById('moreButton');
+  const memeFrame = document.getElementById('memeFrame');
+  let memeFiles = [];
+  let previousMeme = '';
+
+  function showCount(data) {
+    if (data && Number.isFinite(Number(data.count))) countEl.textContent = Number(data.count).toLocaleString('ru-RU');
+  }
+  async function loadCount() {
+    try {
+      const response = await fetch(API, {cache: 'no-store', headers: {'Accept':'application/json'}});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      showCount(await response.json());
+    } catch (_) { countEl.textContent = '—'; }
+  }
+  clickButton.addEventListener('click', async () => {
+    clickButton.disabled = true;
+    try {
+      const response = await fetch(API, {method:'POST', headers:{'Accept':'application/json'}});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      if (data && Number.isFinite(Number(data.count))) showCount(data);
+      else await loadCount();
+    } catch (_) {
+      await loadCount();
+    } finally { clickButton.disabled = false; }
+  });
+
+  async function loadMemes() {
+    try {
+      const response = await fetch(MEMES_API, {cache:'no-store', headers:{'Accept':'application/json'}});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      memeFiles = Array.isArray(data) ? data : (Array.isArray(data.files) ? data.files : []);
+    } catch (_) { memeFiles = []; }
+  }
+  function nextMeme() {
+    if (!memeFiles.length) { memeFrame.replaceChildren(); return; }
+    let candidates = memeFiles.filter(file => file !== previousMeme);
+    if (!candidates.length) candidates = memeFiles;
+    const file = candidates[Math.floor(Math.random() * candidates.length)];
+    previousMeme = file;
+    const img = document.createElement('img');
+    img.alt = '';
+    img.loading = 'eager';
+    img.src = '/memes/' + encodeURIComponent(file).replace(/%2F/gi, '/');
+    img.addEventListener('error', () => { img.remove(); }, {once:true});
+    memeFrame.replaceChildren(img);
+  }
+  moreButton.addEventListener('click', async () => {
+    moreButton.disabled = true;
+    if (!memeFiles.length) await loadMemes();
+    nextMeme();
+    moreButton.disabled = false;
+  });
+  loadCount();
+  loadMemes();
+})();
+</script>
 </body>
 </html>
