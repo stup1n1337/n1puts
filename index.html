@@ -1,105 +1,49 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0a0208">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>n1puts.ru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+
 <style>
-:root{--yellow:#fff000;--black:#090909;--cyan:#00fff0;--pink:#ff00a8;--green:#00ff32}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#090909}
-body{color:#fff;font-family:Impact,"Arial Black",system-ui,sans-serif;overflow-x:hidden;position:relative;isolation:isolate}
-body:before{content:"";position:fixed;inset:-80vmax;z-index:-3;background:repeating-conic-gradient(from -5deg at 50% 50%,#fff000 0deg 10deg,#101000 10deg 20deg);animation:sunspin 70s linear infinite;transform-origin:center}
-body:after{content:"";position:fixed;inset:0;z-index:20;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.42) 3px 4px);mix-blend-mode:multiply}
-@keyframes sunspin{to{transform:rotate(360deg)}}@keyframes ticker{to{transform:translateX(-50%)}}@keyframes logo{0%,100%{transform:skew(-4deg) rotate(-1deg) scale(1)}25%{transform:skew(3deg) rotate(1deg) scale(1.025)}50%{transform:skew(-2deg) rotate(-.5deg) scale(.99)}75%{transform:skew(4deg) rotate(.8deg) scale(1.015)}}
-.ticker{height:43px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;background:#050505;border-bottom:4px solid var(--pink);color:#fff000;font-weight:1000;font-size:clamp(17px,2vw,27px);line-height:1;text-shadow:2px 2px #ff00a8;position:relative;z-index:2}.ticker-track{display:flex;width:max-content;animation:ticker 19s linear infinite}.ticker span{padding-right:24px}
-main{width:min(900px,calc(100% - 28px));margin:clamp(18px,3vw,36px) auto 48px;position:relative;z-index:1}
-.logo{margin:0 auto 26px;text-align:center;font-weight:1000;font-size:clamp(54px,12.8vw,150px);line-height:.88;letter-spacing:-.055em;color:#fff;-webkit-text-stroke:3px #050505;text-shadow:8px 8px 0 #ff00a8,5px 5px 0 #00fff0,-4px -3px 0 #050505;filter:drop-shadow(4px 4px 0 #00ff32);animation:logo 3.4s ease-in-out infinite;overflow-wrap:anywhere}
-.panel{position:relative;margin:17px auto;padding:clamp(17px,3vw,26px);background:rgba(5,5,5,.94);border:4px solid #050505;outline:3px solid #fff000;box-shadow:8px 8px 0 #ff00a8,-4px -4px 0 #00fff0;text-align:center}.panel:before{content:"";position:absolute;inset:4px;border:2px dashed rgba(255,255,255,.25);pointer-events:none}
-.counter{font-size:clamp(38px,6vw,66px);font-weight:1000;line-height:1.1;color:#00fff0;text-shadow:4px 3px #ff00a8,-2px -2px #00ff32;margin:0 0 16px;overflow-wrap:anywhere}
-button{position:relative;z-index:1;font:1000 clamp(18px,2.4vw,25px)/1 Impact,"Arial Black",system-ui,sans-serif;text-transform:uppercase;color:#050505;background:#fff000;border:4px solid #050505;outline:2px solid #fff;padding:10px 20px;cursor:pointer;box-shadow:5px 5px 0 #ff00a8,8px 8px 0 #050505;transition:transform .08s,filter .08s}button:hover{filter:hue-rotate(35deg) saturate(1.5)}button:active{transform:translate(5px,5px);box-shadow:0 0 0 #ff00a8}button:disabled{opacity:.65;cursor:wait}
-.meme-frame{min-height:0;display:grid;place-items:center;margin:0 auto 18px;position:relative;z-index:1}.meme-frame img{display:block;max-width:100%;max-height:65vh;object-fit:contain;border:3px solid #050505;outline:3px solid #fff000;box-shadow:8px 8px 0 #ff00a8,-4px -4px 0 #00fff0}.meme-frame:empty{display:none}
-@media(max-width:600px){.ticker{height:37px;font-size:16px}main{width:calc(100% - 24px);margin-top:24px}.logo{font-size:clamp(48px,14vw,82px);-webkit-text-stroke:2px #050505;margin-bottom:24px}.panel{padding:18px 12px;margin:16px auto;border-width:3px}.counter{font-size:42px}}
-@media(prefers-reduced-motion:reduce){body:before,.ticker-track,.logo{animation:none}}
-</style>
-</head>
+html,body{margin:0;padding:0;background:#0a0208;overflow-x:hidden}
+@keyframes strobe{0%{background:#ff0090}12%{background:#00ffe1}25%{background:#ffe600}37%{background:#7b00ff}50%{background:#00ff2f}62%{background:#ff3b00}75%{background:#00ffe1}87%{background:#ff00d4}100%{background:#ff0090}}
+@keyframes spin3d{0%{transform:rotateX(0deg) rotateZ(-4deg) scale(1)}25%{transform:rotateX(18deg) rotateZ(5deg) scale(1.06)}50%{transform:rotateX(0deg) rotateZ(-6deg) scale(.96)}75%{transform:rotateX(-16deg) rotateZ(4deg) scale(1.08)}100%{transform:rotateX(0deg) rotateZ(-4deg) scale(1)}}
+@keyframes slideL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes slideR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes hue{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
+</style></head>
 <body>
-<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
+<div class="site">
+<div class="bg-rays"></div><div class="scanlines"></div>
+<div class="top-ticker" aria-hidden="true"><div class="ticker-track"><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
 <main>
-  <h1 class="logo">n1puts.ru</h1>
+  <div class="logo-wrap"><h1 class="logo">n1puts.ru</h1></div>
   <section class="panel" aria-label="Кликер">
-    <div id="count" class="counter" aria-live="polite">…</div>
-    <button id="clickButton" type="button">КЛИК</button>
+    <div class="counter" id="count">…</div>
+    <button class="action" id="clickButton" type="button">КЛИК</button>
   </section>
   <section class="panel" aria-label="Мемы">
     <div class="meme-frame" id="memeFrame"></div>
-    <button id="moreButton" type="button">ЕЩЁ</button>
+    <button class="action" id="moreButton" type="button">ЕЩЁ</button>
   </section>
 </main>
+<div class="bottom-ticker" aria-hidden="true"><div class="bottom-track"><span>n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span><span>n1puts.ru ★ n1puts.ru ★ n1puts.ru ★ n1puts.ru ★</span></div></div>
+</div>
 <script>
 (() => {
-  const API = '/api/click.php';
-  const MEMES_API = '/api/memes.php';
-  const countEl = document.getElementById('count');
-  const clickButton = document.getElementById('clickButton');
-  const moreButton = document.getElementById('moreButton');
-  const memeFrame = document.getElementById('memeFrame');
-  let memeFiles = [];
-  let previousMeme = '';
-
-  function showCount(data) {
-    if (data && Number.isFinite(Number(data.count))) countEl.textContent = Number(data.count).toLocaleString('ru-RU');
-  }
-  async function loadCount() {
-    try {
-      const response = await fetch(API, {cache: 'no-store', headers: {'Accept':'application/json'}});
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      showCount(await response.json());
-    } catch (_) { countEl.textContent = '—'; }
-  }
-  clickButton.addEventListener('click', async () => {
-    clickButton.disabled = true;
-    try {
-      const response = await fetch(API, {method:'POST', headers:{'Accept':'application/json'}});
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
-      if (data && Number.isFinite(Number(data.count))) showCount(data);
-      else await loadCount();
-    } catch (_) {
-      await loadCount();
-    } finally { clickButton.disabled = false; }
-  });
-
-  async function loadMemes() {
-    try {
-      const response = await fetch(MEMES_API, {cache:'no-store', headers:{'Accept':'application/json'}});
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
-      memeFiles = Array.isArray(data) ? data : (Array.isArray(data.files) ? data.files : []);
-    } catch (_) { memeFiles = []; }
-  }
-  function nextMeme() {
-    if (!memeFiles.length) { memeFrame.replaceChildren(); return; }
-    let candidates = memeFiles.filter(file => file !== previousMeme);
-    if (!candidates.length) candidates = memeFiles;
-    const file = candidates[Math.floor(Math.random() * candidates.length)];
-    previousMeme = file;
-    const img = document.createElement('img');
-    img.alt = '';
-    img.loading = 'eager';
-    img.src = '/memes/' + encodeURIComponent(file).replace(/%2F/gi, '/');
-    img.addEventListener('error', () => { img.remove(); }, {once:true});
-    memeFrame.replaceChildren(img);
-  }
-  moreButton.addEventListener('click', async () => {
-    moreButton.disabled = true;
-    if (!memeFiles.length) await loadMemes();
-    nextMeme();
-    moreButton.disabled = false;
-  });
-  loadCount();
-  loadMemes();
+ const API='/api/click.php', MEMES='/api/memes.php';
+ const count=document.getElementById('count'), click=document.getElementById('clickButton');
+ const more=document.getElementById('moreButton'), frame=document.getElementById('memeFrame');
+ let files=[], previous='';
+ function paint(data) { if(data && Number.isFinite(Number(data.count))) count.textContent=Number(data.count).toLocaleString('ru-RU'); }
+ async function refresh() { try { const r=await fetch(API,{cache:'no-store'}); if(!r.ok) throw 0; paint(await r.json()); } catch(e) { count.textContent='—'; } }
+ click.addEventListener('click',async()=>{click.disabled=true;try{const r=await fetch(API,{method:'POST',headers:{Accept:'application/json'}});if(!r.ok)throw 0;paint(await r.json());}catch(e){await refresh();}finally{click.disabled=false;}});
+ async function getFiles() { try { const r=await fetch(MEMES,{cache:'no-store'}); if(!r.ok)throw 0;const d=await r.json();files=Array.isArray(d)?d:(d.files||[]); }catch(e){files=[];} }
+ function next() { if(!files.length){frame.replaceChildren();return;}let a=files.filter(x=>x!==previous);if(!a.length)a=files;const f=a[Math.floor(Math.random()*a.length)];previous=f;const img=document.createElement('img');img.src='/memes/'+f.split('/').map(encodeURIComponent).join('/');img.alt='';img.onerror=()=>img.remove();frame.replaceChildren(img); }
+ more.addEventListener('click',async()=>{more.disabled=true;if(!files.length)await getFiles();next();more.disabled=false;});
+ refresh();getFiles();
 })();
 </script>
-</body>
-</html>
+</body></html>
