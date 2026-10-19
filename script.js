@@ -101,7 +101,7 @@
   const count = document.getElementById("globalCount");
   const status = document.getElementById("clickerStatus");
   if (!toggle || !overlay) return;
-  const words = ["ДОЛБАЕБЫ", "ХУЙНЯ", "ПОШЕЛ НАХУЙ", "ЧТО ЗА ХУЙНЯ", "ВСЁ ПИЗДЕЦ", "ОБНАРУЖЕН ДОЛБАЕБ", "ХУЙ ЗНАЕТ", "АХУЕТЬ"];
+  const words = ["ДОЛБАЕБ", "ПОШЕЛ НАХУЙ", "ПИЗДЕЦ"];
   let interval = null;
   let spawnTimer = null;
   const pick = a => a[Math.floor(Math.random() * a.length)];
@@ -119,7 +119,7 @@
   function setChaos(on) {
     document.body.classList.toggle("chaos-mode", on);
     toggle.setAttribute("aria-pressed", String(on));
-    toggle.textContent = on ? "ВЫРУБИТЬ ЭТОТ ПИЗДЕЦ" : "ВАКХАНАЛИЯ";
+    toggle.textContent = on ? "ВЫРУБИТЬ" : "ПИЗДЕЦ";
     overlay.setAttribute("aria-hidden", String(!on));
     if (on) {
       if (status) status.textContent = "ПОШЕЛ НАХУЙ · РЕЖИМ ВКЛЮЧЁН";
